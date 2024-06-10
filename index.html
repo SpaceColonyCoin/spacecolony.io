@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Space Colony Coin</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .parallax {
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        .earth {
+            background-image: url('earth.webp');
+        }
+        .galaxy {
+            background-image: url('galaxy.webp');
+        }
+        .rocket {
+            background-image: url('rocket.webp');
+        }
+        .nasa {
+            background-image: url('nasa.webp');
+        }
+        .roadmap-stage {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+        .roadmap-stage:nth-child(odd) {
+            flex-direction: row-reverse;
+        }
+        .roadmap-stage:nth-child(even) {
+            flex-direction: row;
+        }
+    </style>
+    <script>
+        // count-down timer
+        let dest = new Date("jun 15, 2024 10:00:00 UTC").getTime();
+        let x = setInterval(function () {
+            let now = new Date().getTime();
+            let diff = dest - now;
+            
+            // Check if the countdown has reached zero or negative
+            if (diff <= 0) {
+                clearInterval(x); // Stop the countdown
+                return; // Exit the function
+            }
+            
+            let days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            let hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            let minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            let seconds = Math.floor((diff % (1000 * 60)) / 1000);
+            
+            if (days < 10) {
+                days = `0${days}`;
+            }
+            if (hours < 10) {
+                hours = `0${hours}`;
+            }
+            if (minutes < 10) {
+                minutes = `0${minutes}`;
+            }
+            if (seconds < 10) {
+                seconds = `0${seconds}`;
+            }
+            
+            // Get elements by class name
+            let countdownElements = document.getElementsByClassName("countdown-element");
+            
+            // Loop through the elements and update their content
+            for (let i = 0; i < countdownElements.length; i++) {
+                let className = countdownElements[i].classList[1]; // Get the second class name
+                switch (className) {
+                    case "days":
+                        countdownElements[i].innerHTML = days;
+                        break;
+                    case "hours":
+                        countdownElements[i].innerHTML = hours;
+                        break;
+                    case "minutes":
+                        countdownElements[i].innerHTML = minutes;
+                        break;
+                    case "seconds":
+                        countdownElements[i].innerHTML = seconds;
+                        break;
+                    default:
+                        break;
+                }
+            }
+        }, 1000);
+    </script>
+</head>
+<body class="bg-gray-900 text-white">
+
+    <header class="w-full">
+        <img src="header.webp" alt="Header Image" class="w-full h-auto">
+    </header>
+
+    <section id="about" class="parallax earth flex items-center justify-center text-center text-white py-16">
+        <div class="container mx-auto bg-gray-900 bg-opacity-50 p-8 rounded-lg">
+            <img src="symbol.png" alt="Space Colony Logo" class="w-32 h-32 mx-auto mb-4">
+            <h1 class="text-3xl font-bold mb-4">Space Colony</h2>
+            <p class="text-lg">💪 Hey degens! Are you lying on the couch watching TV with a beer 🍺 in hand?</p><p class="text-lg">Get off your asses and brace yourself for a rocket launch! 🚀🚀🚀</p>
+            <div class="text-center pt-8">
+                <iframe class="w-full aspect-video rounded-lg shadow-lg" src="https://www.youtube.com/embed/X8yoCMEqmJQ?si=NBitgSe9JzSpJYYT" title="Space Colony Coin Introduction" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen="true"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <section id="space-tickets" class="parallax galaxy flex items-center justify-center text-center text-white py-16">
+        <div class="container mx-auto bg-gray-900 bg-opacity-50 p-8 rounded-lg">
+            <div class="container mx-auto md:w-1/2 w-auto">
+                <h2 class="text-3xl font-bold mb-4">Tickets to Space</h2>
+                <p class="text-lg">✨ SpaceColony is giving away REAL tickets to space once we reach a certain market cap together with our community:</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
+                    <!-- Phase 1 -->
+                    <div class="flex flex-col justify-center text-left">
+                        <h3 class="text-2xl font-bold">Phase 1</h3>
+                        <p>A flight to the edge of space in a hot-air balloon 🔮</p>
+                        <p>$SCLY market cap - US$15 million</p>
+                        <p>Ticket will be drawn among all our fair launch contributors!</p>
+                    </div>
+                    <div class="flex items-center justify-center">
+                        <img src="balloon.webp" alt="Hot-air balloon" class="w-full h-auto rounded-lg">
+                    </div>
+                    <!-- Phase 2 -->
+                    <div class="flex flex-col justify-center text-left">
+                        <h3 class="text-2xl font-bold">Phase 2</h3>
+                        <p>A suborbital flight with real zero-gravity experience 🌏</p>
+                        <p>$SCLY market cap - US$150 million</p>
+                        <p>Ticket will be drawn among $SCLY token holders</p>
+                    </div>
+                    <div class="flex items-center justify-center">
+                        <img src="suborbital.webp" alt="Suborbital flight" class="w-full h-auto rounded-lg">
+                    </div>
+                    <!-- Phase 3 -->
+                    <div class="flex flex-col justify-center text-left">
+                        <h3 class="text-2xl font-bold">Phase 3</h3>
+                        <p>A flight to the ISS 🌌</p>
+                        <p>$SCLY market cap - US$5 billion</p>
+                        <p>Ticket will be drawn among $SCLY token holders</p>
+                    </div>
+                    <div class="flex items-center justify-center">
+                        <img src="iss.webp" alt="Flight to the ISS" class="w-full h-auto rounded-lg">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="how-to-buy" class="parallax rocket flex items-center justify-center text-center text-white py-16">
+        <div class="container mx-auto bg-gray-900 bg-opacity-50 p-8 rounded-lg">
+            <h2 class="text-3xl font-bold mb-4">How to Buy $SCLY</h2>
+            <p class="text-lg mb-3">Time to Launch</p>
+            <div class="flex items-start justify-center w-full gap-4 count-down-main">
+                <div class="timer w-16">
+                    <div class="bg-cyan-950 bg-opacity-75 py-4 px-2 rounded-lg overflow-hidden">
+                        <h3 class="countdown-element days font-semibold text-2xl text-white text-center"></h3>
+                    </div>
+                    <p class="text-lg font-medium text-white mt-2 text-center w-full">days</p>
+                </div>
+                <h3 class="font-manrope font-semibold text-2xl text-white mt-3">:</h3>
+                <div class="timer w-16">
+                    <div class="bg-cyan-950 bg-opacity-75 py-4 px-2 rounded-lg overflow-hidden">
+                    <h3 class="countdown-element hours font-semibold text-2xl text-white text-center"></h3>
+                    </div>
+                    <p class="text-lg font-normal text-white mt-2 text-center w-full">hours</p>
+                </div>
+                <h3 class="font-manrope font-semibold text-2xl text-white mt-3">:</h3>
+                <div class="timer w-16">
+                    <div class="bg-cyan-950 bg-opacity-75 py-4 px-2 rounded-lg overflow-hidden">
+                        <h3 class="countdown-element minutes font-semibold text-2xl text-white text-center"></h3>
+                    </div>
+                    <p class="text-lg font-normal text-white mt-2 text-center w-full">minutes</p>
+                </div>
+                <h3 class="font-manrope font-semibold text-2xl text-white mt-3">:</h3>
+                <div class="timer w-16">
+                    <div class="bg-cyan-950 bg-opacity-75 py-4 px-2 rounded-lg overflow-hidden ">
+                        <h3 class="countdown-element seconds font-semibold text-2xl text-white text-center animate-countinsecond"></h3>
+                    </div>
+                    <p class="text-lg  font-normal text-white mt-2 text-center w-full">seconds</p>
+                </div>
+            </div>                    
+        </div>
+    </section>
+
+    <section id="tokenomics" class="parallax galaxy flex items-center justify-center text-center text-white py-16">
+        <div class="container mx-auto bg-gray-900 bg-opacity-50 p-8 rounded-lg">
+            <h2 class="text-3xl font-bold mb-4">Tokenomics</h2>
+            <div class="mx-auto text-center">
+                <img src="tokenomics.png" alt="Tokenomics Chart" class="rounded-lg mx-auto">
+            </div>
+            <div class="text-center">
+                <p class="text-lg">Total supply - 6.25 billion $SCLY</p>
+                <p class="text-lg"><span class="text-blue-500">■</span> 52.0% - Fair Launch</p>
+                <p class="text-lg"><span class="text-red-500">■</span> 30.1% - Liquidity</p>
+                <p class="text-lg"><span class="text-yellow-500">■</span> 6.0% - Space Flights</p>
+                <p class="text-lg"><span class="text-green-500">■</span> 11.9% - Marketing & CEX</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="roadmap" class="parallax nasa flex items-center justify-center text-center text-white py-16">
+        <div class="container mx-auto bg-gray-900 bg-opacity-50 p-8 rounded-lg">
+            <h2 class="text-3xl font-bold mb-4">Roadmap</h2>
+            <div class="relative">
+                <div class="absolute left-1/2 transform -translate-x-1/2 h-full border-r-2 border-gray-400"></div>
+                <div class="space-y-8">
+                    <!-- Stage 1 -->
+                    <div class="roadmap-stage ml-5">
+                        <div class="w-1/2 p-4 bg-cyan-950 bg-opacity-75 rounded-lg">
+                            <h3 class="text-2xl font-bold pb-2">launch</h3>
+                            <p>website and social media</p>
+                            <p>community building</p>
+                            <p>fair launch</p>
+                        </div>
+                    </div>
+                    <!-- Stage 2 -->
+                    <div class="roadmap-stage mr-5">
+                        <div class="w-1/2 p-4 bg-cyan-950 bg-opacity-75 rounded-lg">
+                            <h3 class="text-2xl font-bold pb-2">cruise</h3>
+                            <p>DEX listing</p>
+                            <p>hot-air balloon flight</p>
+                            <p>billboards campaign</p>
+                        </div>
+                    </div>
+                    <!-- Stage 3 -->
+                    <div class="roadmap-stage ml-5">
+                        <div class="w-1/2 p-4 bg-cyan-950 bg-opacity-75 rounded-lg">
+                            <h3 class="text-2xl font-bold">encounter</h3>
+                            <p>CEX listings</p>
+                            <p>suborbital flight</p>
+                            <p>community DAO</p>
+                        </div>
+                    </div>
+                    <!-- Stage 4 -->
+                    <div class="roadmap-stage mr-5">
+                        <div class="w-1/2 p-4 bg-cyan-950 bg-opacity-75 rounded-lg">
+                            <h3 class="text-2xl font-bold">extended operations</h3>
+                            <p>flight to the ISS</p>
+                            <p>TV series production</p>
+                            <p>interplanetary blockchain development</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="parallax galaxy flex items-center justify-center text-center text-white py-16">
+        <div class="container mx-auto bg-gray-900 bg-opacity-50 p-8 rounded-lg">
+            <div class="flex justify-center items-center space-x-4 mb-8">
+                <a href="https://www.pinksale.finance" target="_blank" class="inline-block">
+                    <img src="pinksale.png" alt="PinkSale" class="rounded-lg">
+                </a>
+                <a href="https://www.dexview.com" target="_blank" class="inline-block">
+                    <img src="dexview.png" alt="DEXView" class="rounded-lg">
+                </a>
+            </div>
+            <div class="flex justify-center space-x-4 mt-5">
+                <!-- X (Twitter) -->
+                <a href="https://x.com/yourprofile" target="_blank" aria-label="X">
+                    <img src="x.svg" alt="Twitter" class="w-16 h-16 text-white hover:text-gray-400">
+                </a>
+                <!-- Discord -->
+                <a href="https://discord.com/yourprofile" target="_blank" aria-label="Discord">
+                    <img src="discord.svg" alt="Discord" class="w-16 h-16 text-white hover:text-gray-400">
+                </a>
+                <!-- Telegram -->
+                <a href="https://telegram.org/yourprofile" target="_blank" aria-label="Telegram">
+                    <img src="telegram.svg" alt="Telegram" class="w-16 h-16 text-white hover:text-gray-400">
+                </a>
+                <!-- YouTube -->
+                <a href="https://youtube.com/yourprofile" target="_blank" aria-label="YouTube">
+                    <img src="youtube.svg" alt="YouTube" class="w-16 h-16 text-white hover:text-gray-400">
+                </a>
+            </div>
+            <p class="text-lg mt-5">© 2024 Space Colony. All rights reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
